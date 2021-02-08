@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { COLOR_FILTER } from "../../Helpers";
+import { COLOR_FILTER } from "../../../utils/Styles";
 
 interface FilterBarFilterProps {
   iconFileName: string;

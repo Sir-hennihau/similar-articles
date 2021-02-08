@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { COLOR_FILTER } from "../Helpers";
+import { COLOR_FILTER } from "../../utils/Styles";
 import { FilterBarContainer } from "./components/FilterBarContainer";
 import { FilterBarFilter } from "./components/FilterBarFilter";
 
