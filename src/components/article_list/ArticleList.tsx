@@ -1,11 +1,19 @@
 import React, { useContext } from "react";
+import Scrollbars from "react-custom-scrollbars";
 import styled from "styled-components";
 import { SearchContext } from "../../utils/Context";
+import { ArticleListItem } from "./components/ArticleListItem";
 
 export const ArticleList = () => {
+  const { articles } = useContext(SearchContext);
+
   return (
     <ArticleListContainer>
-      <p>test</p>
+      <Scrollbars style={{ height: 680, width: 500 }}>
+        {articles?.map((article) => (
+          <ArticleListItem article={article} />
+        ))}
+      </Scrollbars>
     </ArticleListContainer>
   );
 };

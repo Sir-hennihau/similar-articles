@@ -12,6 +12,4 @@ export type SimilarToTextArticle = {
   url: string;
 };
 
-export interface SimilarToTextPostResponseBody {
-  data: SimilarToTextArticle[];
-}
+export type SimilarToTextPostResponseBody = SimilarToTextArticle[];

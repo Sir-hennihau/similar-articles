@@ -1,5 +1,5 @@
 import React, { ReactNode, useCallback, useMemo, useState } from "react";
-import { SearchContext } from "../utils/Context";
+import { Article, SearchContext } from "../utils/Context";
 
 interface SearchContextWrapperProps {
   children: ReactNode;
@@ -11,9 +11,11 @@ interface SearchContextWrapperProps {
 export const SearchContextWrapper = ({
   children,
 }: SearchContextWrapperProps) => {
-  const [search, setSearch] = useState("");
+  const [articles, setArticles] = useState<Article[]>();
 
-  const searchContextValue = useMemo(() => ({ search, setSearch }), [search]);
+  const searchContextValue = useMemo(() => ({ articles, setArticles }), [
+    articles,
+  ]);
 
   return (
     <SearchContext.Provider value={searchContextValue}>

@@ -11,12 +11,13 @@ interface SearchBarProps {}
 export const SearchBar = ({}: SearchBarProps) => {
   const [link, setLink] = useState("");
 
+  const { setArticles } = useContext(SearchContext);
+
   const { addToast } = useToasts();
 
   const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setLink(event.target.value);
-    console.log("invoked");
   };
 
   const onButtonClick = async () => {
@@ -30,8 +31,6 @@ export const SearchBar = ({}: SearchBarProps) => {
           },
         }
       );
-
-      console.log("parserResponse", parserResponse);
 
       const articleBody = parserResponse.data?.body;
 
@@ -54,7 +53,18 @@ export const SearchBar = ({}: SearchBarProps) => {
         }
       );
 
-      console.log("similarToTextResponse", similarToTextResponse);
+      const convertedArticles = similarToTextResponse.data.map(
+        ({ published, similarity, source_name, thumbnail, title, url }) => ({
+          published,
+          similarity,
+          thumbnail,
+          title,
+          url,
+          sourceName: source_name,
+        })
+      );
+
+      setArticles(convertedArticles);
     } catch (error) {
       addToast("An unexpected error occured.", { appearance: "error" });
     }
@@ -71,6 +81,7 @@ export const SearchBar = ({}: SearchBarProps) => {
 const SearchBarContainer = styled.div`
   align-items: center;
   display: flex;
+  margin-bottom: 20px;
 `;
 
 export const SearchBarInput = styled.input`
