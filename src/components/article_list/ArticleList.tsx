@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { SearchContext } from "../../utils/Context";
 import { ArticleListItem } from "./components/ArticleListItem";
 
+/**
+ * Renders a list of articles.
+ */
 export const ArticleList = () => {
   const { articles } = useContext(SearchContext);
 

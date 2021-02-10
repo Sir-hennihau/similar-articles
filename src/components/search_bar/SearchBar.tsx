@@ -6,6 +6,9 @@ import { SearchContext } from "../../utils/Context";
 import { axios } from "../../utils/Api";
 import { SimilarToTextPostResponseBody } from "./utils/searchBarTypes";
 
+/**
+ * Input field that enables searching for similar articles. Sends multiple network requests on submit.
+ */
 export const SearchBar = () => {
   const [link, setLink] = useState("");
 

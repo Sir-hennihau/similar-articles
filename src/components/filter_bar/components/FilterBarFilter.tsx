@@ -10,23 +10,21 @@ interface FilterBarFilterProps {
 export const FilterBarFilter = ({
   iconFileName,
   title,
-}: FilterBarFilterProps) => {
-  return (
-    <FilterBarFilterContainer>
-      <FilterBarFilterIcon
-        alt={title}
-        src={require(`../../../images/${iconFileName}`).default}
-      />
+}: FilterBarFilterProps) => (
+  <FilterBarFilterContainer>
+    <FilterBarFilterIcon
+      alt={title}
+      src={require(`../../../images/${iconFileName}`).default}
+    />
 
-      <FilterBarFilterTitle>{title}</FilterBarFilterTitle>
+    <FilterBarFilterTitle>{title}</FilterBarFilterTitle>
 
-      <FilterBarFilterIcon
-        alt="dropdown"
-        src={require("../../../images/arrow-down-sign-to-navigate.png").default}
-      />
-    </FilterBarFilterContainer>
-  );
-};
+    <FilterBarFilterIcon
+      alt="dropdown"
+      src={require("../../../images/arrow-down-sign-to-navigate.png").default}
+    />
+  </FilterBarFilterContainer>
+);
 
 const FilterBarFilterContainer = styled.div`
   align-items: center;

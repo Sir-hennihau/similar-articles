@@ -1,26 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 import { COLOR_FILTER } from "../../utils/Styles";
-import { FilterBarContainer } from "./components/FilterBarContainer";
 import { FilterBarFilter } from "./components/FilterBarFilter";
 
-export const FilterBar = () => {
-  return (
-    <FilterBarContainer data-test="FilterBar">
-      <FilterBarFilterContainer>
-        <FilterBarFilterText>Filters:</FilterBarFilterText>
+/**
+ * Enables user to select from various filters.
+ */
+export const FilterBar = () => (
+  <FilterBarContainer data-test="FilterBar">
+    <FilterBarFilterContainer>
+      <FilterBarFilterText>Filters:</FilterBarFilterText>
 
-        <FilterBarFilter iconFileName="newspaper.png" title="MY SOURCES" />
+      <FilterBarFilter iconFileName="newspaper.png" title="MY SOURCES" />
 
-        <FilterBarFilter iconFileName="clock.png" title="PAST MONTH" />
-      </FilterBarFilterContainer>
-      <FilterBarHelpIcon
-        src={require("../../images/information.png").default}
-      />
-    </FilterBarContainer>
-  );
-};
+      <FilterBarFilter iconFileName="clock.png" title="PAST MONTH" />
+    </FilterBarFilterContainer>
+    <FilterBarHelpIcon src={require("../../images/information.png").default} />
+  </FilterBarContainer>
+);
 
+const FilterBarContainer = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
 const FilterBarFilterText = styled.p`
   color: gray;
   font-weight: bold;
