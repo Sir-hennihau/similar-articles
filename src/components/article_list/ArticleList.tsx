@@ -10,6 +10,10 @@ import { ArticleListItem } from "./components/ArticleListItem";
 export const ArticleList = () => {
   const { articles } = useContext(SearchContext);
 
+  if (articles?.length === 0) {
+    return <p>Could not retrieve information from API.</p>;
+  }
+
   return (
     <ArticleListContainer data-test="ArticleList">
       <Scrollbars style={{ height: 680, width: 500 }}>

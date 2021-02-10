@@ -95,7 +95,10 @@ export const SearchBar = () => {
   return (
     <div data-test="SearchBar">
       <SearchBarInputContainer>
-        <SearchBarInput onChange={onInputChange} />
+        <SearchBarInput
+          onChange={onInputChange}
+          placeholder="Enter a URL to a blog article"
+        />
         <SearchBarButton onClick={onButtonClick}>Search</SearchBarButton>
       </SearchBarInputContainer>
       <SearchBarValidationError data-test="SearchBarValidationError">
