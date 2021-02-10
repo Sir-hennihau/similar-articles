@@ -15,19 +15,38 @@ export const SearchBar = ({}: SearchBarProps) => {
 
   const { addToast } = useToasts();
 
+  const getValidationError = () => {
+    if (!link) {
+      return;
+    }
+
+    const URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+
+    if (link.match(URL_REGEX)) {
+      return;
+    }
+
+    return "Please enter a valid URL.";
+  };
+
   const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setLink(event.target.value);
   };
 
   const onButtonClick = async () => {
+    if (!link || getValidationError()) {
+      return addToast("Please enter a valid URL.", {
+        appearance: "error",
+      });
+    }
+
     try {
       const parserResponse = await axios.get(
         "https://document-parser-api.lateral.io/",
         {
           params: {
-            url:
-              "https://www.bbc.com/future/article/20150415-the-buttons-that-do-nothing",
+            url: link,
           },
         }
       );
@@ -71,10 +90,15 @@ export const SearchBar = ({}: SearchBarProps) => {
   };
 
   return (
-    <SearchBarContainer>
-      <SearchBarInput onChange={onInputChange} />
-      <SearchBarButton onClick={onButtonClick}>Search</SearchBarButton>
-    </SearchBarContainer>
+    <div>
+      <SearchBarContainer>
+        <SearchBarInput onChange={onInputChange} />
+        <SearchBarButton onClick={onButtonClick}>Search</SearchBarButton>
+      </SearchBarContainer>
+      <SearchBarValidationError>
+        {getValidationError()}
+      </SearchBarValidationError>
+    </div>
   );
 };
 
@@ -84,7 +108,7 @@ const SearchBarContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export const SearchBarInput = styled.input`
+const SearchBarInput = styled.input`
   height: 23px;
   border: 2px solid #0095c1;
   border-radius: 5px;
@@ -92,7 +116,7 @@ export const SearchBarInput = styled.input`
   width: 100%;
 `;
 
-export const SearchBarButton = styled.button`
+const SearchBarButton = styled.button`
   color: #0095c1;
   cursor: pointer;
   border: 2px solid #0095c1;
@@ -101,4 +125,8 @@ export const SearchBarButton = styled.button`
   outline: none;
   font-size: 20px;
   margin-left: 20px;
+`;
+
+const SearchBarValidationError = styled.p`
+  color: red;
 `;
