@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useMemo, useState } from "react";
+import React, { ReactNode, useMemo, useState } from "react";
 import { Article, SearchContext } from "../utils/Context";
 
 interface SearchContextWrapperProps {

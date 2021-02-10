@@ -8,10 +8,10 @@ export const ArticleList = () => {
   const { articles } = useContext(SearchContext);
 
   return (
-    <ArticleListContainer>
+    <ArticleListContainer data-test="ArticleList">
       <Scrollbars style={{ height: 680, width: 500 }}>
-        {articles?.map((article) => (
-          <ArticleListItem article={article} />
+        {articles?.map((article, index) => (
+          <ArticleListItem article={article} key={index} />
         ))}
       </Scrollbars>
     </ArticleListContainer>

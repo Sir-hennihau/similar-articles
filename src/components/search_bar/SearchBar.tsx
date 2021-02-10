@@ -6,9 +6,7 @@ import { SearchContext } from "../../utils/Context";
 import { axios } from "../../utils/Api";
 import { SimilarToTextPostResponseBody } from "./utils/searchBarTypes";
 
-interface SearchBarProps {}
-
-export const SearchBar = ({}: SearchBarProps) => {
+export const SearchBar = () => {
   const [link, setLink] = useState("");
 
   const { setArticles } = useContext(SearchContext);
@@ -72,6 +70,8 @@ export const SearchBar = ({}: SearchBarProps) => {
         }
       );
 
+      console.log("similarToTextResponse.data", similarToTextResponse.data);
+
       const convertedArticles = similarToTextResponse.data.map(
         ({ published, similarity, source_name, thumbnail, title, url }) => ({
           published,
@@ -95,7 +95,7 @@ export const SearchBar = ({}: SearchBarProps) => {
         <SearchBarInput onChange={onInputChange} />
         <SearchBarButton onClick={onButtonClick}>Search</SearchBarButton>
       </SearchBarInputContainer>
-      <SearchBarValidationError>
+      <SearchBarValidationError data-test="SearchBarValidationError">
         {getValidationError()}
       </SearchBarValidationError>
     </div>
