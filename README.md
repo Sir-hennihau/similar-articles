@@ -1,6 +1,6 @@
 # Similar Articles
 
-Sample projects that displays similar article recommendations retrieved from [Lateral API](https://lateral.io/).
+Sample project that displays similar article recommendations retrieved from [Lateral API](https://lateral.io/).
 
 To run the project, use the following command:
 
