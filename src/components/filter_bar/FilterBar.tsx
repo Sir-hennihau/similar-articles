@@ -6,7 +6,7 @@ import { FilterBarFilter } from "./components/FilterBarFilter";
 
 export const FilterBar = () => {
   return (
-    <FilterBarContainer>
+    <FilterBarContainer data-test="FilterBar">
       <FilterBarFilterContainer>
         <FilterBarFilterText>Filters:</FilterBarFilterText>
 

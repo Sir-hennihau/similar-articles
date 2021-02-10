@@ -90,11 +90,11 @@ export const SearchBar = ({}: SearchBarProps) => {
   };
 
   return (
-    <div>
-      <SearchBarContainer>
+    <div data-test="SearchBar">
+      <SearchBarInputContainer>
         <SearchBarInput onChange={onInputChange} />
         <SearchBarButton onClick={onButtonClick}>Search</SearchBarButton>
-      </SearchBarContainer>
+      </SearchBarInputContainer>
       <SearchBarValidationError>
         {getValidationError()}
       </SearchBarValidationError>
@@ -102,7 +102,7 @@ export const SearchBar = ({}: SearchBarProps) => {
   );
 };
 
-const SearchBarContainer = styled.div`
+const SearchBarInputContainer = styled.div`
   align-items: center;
   display: flex;
   margin-bottom: 20px;
